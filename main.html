@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CTUET Captcha Autocomplete</title>
+    <link rel="stylesheet" href="assets/css/spectre.min.css">
+    <style>
+      body {
+        background: #bdc3c7;
+        width: 300px;
+      }
+
+      h1 {
+        font-size: 18px;
+        margin: 15px 0;
+      }
+
+      section {
+        background: #fff;
+        border-radius: 4px;
+        margin: 0 0 15px 0;
+        padding: 12px;
+      }
+
+      section header {
+        font-weight: 600;
+        font-size: 16px;
+        margin: 0 0 10px 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>CTUET Captcha Autocomplete<br/>
+        <small><span class="label status">...</span></small>
+      </h1>
+      <section>
+        <header>Tùy chỉnh</header>
+        <div class="form-group">
+          <label class="form-switch">
+            <input type="checkbox" class="button status">
+            <i class="form-icon"></i> Tắt tạm thời, không sử dụng
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="apikey">OCR.space API Key <code class="code-api-key"></code><br/>
+            <small>Nhập vào đây nếu API key hết dung lượng sử dụng. Lấy key <a href="http://eepurl.com/bOLOcf" target="_blank">tại đây</a>.</small>
+          </label>
+          <input class="form-input input-api-key" type="text" id="apikey" placeholder="API Key">
+        </div>
+      </section>
+      <section>
+        <header>About</header>
+        <ul>
+          <li>Tác giả: <a href="https://github.com/tdtgit" target="_blank">Github</a> | <a href="https://fb.com/duonganhtuancom">Facebook</a></li>
+          <li>Mã nguồn: <a href="https://github.com/tdtgit/ctuet-captcha-autocomplete">Github</a></li>
+        </ul>
+      </section>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/__.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
