@@ -1,6 +1,8 @@
 # CTUET Captcha Autocomplete
 Một extension của trình duyệt Google Chrome giúp tự động xử lý và điền captcha (mã an toàn) trên một số website để cuộc sống trở nên đơn giản hơn.
 
+![CTUET Captcha Autocomplete](https://i.imgur.com/M6BclMD.gif)
+
 ## Hướng dẫn cài đặt
 Truy cập vào trang [Releases](https://github.com/tdtgit/CTUET-captcha-autocomplete/releases) để tải về phiên bản mới nhất. Bạn có thể tải về tập tin `.crx` để việc cài đặt trở nên đơn giản hơn, chỉ cần kéo thả.
 
