@@ -237,15 +237,23 @@ function getCaptcha(){
                         var captcha = result['ParsedResults'][0]['ParsedText'].replace(" ", "").replace("\n", "").replace("↵", "").substr(0,4);
                         if(MD5(captcha) == $("input#txtSecurityCodeValue").val()){
                             $("input#txtSercurityCode").val(captcha);
-                            // Chèn code auto click để auto login vào đây nè :D
                         }else {
-                            // $("img#imgRefresh").click();
+                            setTimeout(function() {
+                                $("img#imgRefresh").click();
+                            }, 200);
                         }
                     }else {
-                        $("img#imgRefresh").click();
+                        setTimeout(function() {
+                            $("img#imgRefresh").click();
+                        }, 200);
                     }
                     $("input#ctl00_ucRight1_btnLogin").prop("disabled", false);
                     $("input#ctl00_ucRight1_btnLogin").val("Đăng nhập");
+                },
+                error: function(){
+                    $("input#ctl00_ucRight1_btnLogin").prop("disabled", false);
+                    $("input#ctl00_ucRight1_btnLogin").val("Đăng nhập");
+                    $("input#ctl00_ucRight1_btnLogin").after("<p>Giải captcha thất bại, vui lòng kiểm tra API</p>");
                 }
             });
         });
@@ -255,16 +263,19 @@ function getCaptcha(){
 jQuery(function(){
     Resolver.get('__isOn', function(result){
         if(result){
+
             // Lấy captcha khi vào trang
             setTimeout(function() {
                 getCaptcha();
             }, 500);
+
             // Lấy captcha khi click refresh hình
             $("img#imgRefresh").on("click", function(){
                 setTimeout(function() {
                     getCaptcha();
-                }, 100);
+                }, 300);
             });
+
         }
     });
 });

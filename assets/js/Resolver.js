@@ -16,7 +16,7 @@ function ResolverCls(){
         });
     }
 
-    this.setStatus = function(bool){
+    this.setStatus = function(){
         if($(".label.status").length){
             this.get('__isOn', function(result){
                 if(result){
@@ -53,13 +53,7 @@ function ResolverCls(){
     }
 
     this.init = function(){
-        this.get('__isOn', function(result){
-            if(result){
-                __.setStatus(false);
-            }else{
-                __.setStatus(true);
-            }
-        });
+        this.setStatus();
     }
 
     return this;
