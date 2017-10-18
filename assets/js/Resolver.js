@@ -3,9 +3,7 @@ function ResolverCls(){
     var __ = this;
 
     this.set = function(key, value){
-        chrome.storage.sync.set({[key]: value}, function(){
-            console.log("Setting saved " + key + " - " + value);
-        });
+        chrome.storage.sync.set({[key]: value});
     }
 
     this.get = function(key, callback){
@@ -45,11 +43,6 @@ function ResolverCls(){
             }
             __.setStatus();
         });
-    }
-
-    this.saveApiKey = function(ApiKey){
-        this.set('__ocrApiKey', ApiKey);
-        $(".code-api-key").text(ApiKey);
     }
 
     this.init = function(){

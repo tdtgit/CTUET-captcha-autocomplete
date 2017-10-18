@@ -199,83 +199,25 @@ var MD5 = function (string) {
     return temp.toLowerCase();
 }
 
-function getBase64Image(img) {
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    var dataURL = canvas.toDataURL("image/png");
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
-
-function getCaptcha(){
-    if ($("input#txtSecurityCodeValue").length > 0){
-        // Trước xử lý: Block nút đăng nhập
-        $("input#ctl00_ucRight1_btnLogin").prop("disabled", "disabled");
-        $("input#ctl00_ucRight1_btnLogin").val("Đang giải captcha");
-        // Lấy base64 của captcha
-        var captcha_base64 = "data:image/jpeg;base64," + getBase64Image(document.getElementById("imgSecurityCode"));
-        var formData = new FormData();
-        //
-        Resolver.get('__ocrApiKey', function(result){
-            formData.append("base64Image", captcha_base64);
-            formData.append("language", "eng");
-            formData.append("apikey", result);
-            formData.append("isOverlayRequired", false);
-            jQuery.ajax({
-                url: 'https://api.ocr.space/parse/image',
-                data: formData,
-                dataType: 'json',
-                cache: false,
-                contentType: false,
-                processData: false,
-                type: 'POST',
-                success: function (result) {
-                    if(result['ParsedResults'][0]['ParsedText'].length > 0 ||
-                        result['ParsedResults'][0]['ParsedText'].replace(" ", "").length != 4){
-                        var captcha = result['ParsedResults'][0]['ParsedText'].replace(" ", "").replace("\n", "").replace("↵", "").substr(0,4);
-                        if(MD5(captcha) == $("input#txtSecurityCodeValue").val()){
-                            $("input#txtSercurityCode").val(captcha);
-                        }else {
-                            setTimeout(function() {
-                                $("img#imgRefresh").click();
-                            }, 200);
-                        }
-                    }else {
-                        setTimeout(function() {
-                            $("img#imgRefresh").click();
-                        }, 200);
-                    }
-                    $("input#ctl00_ucRight1_btnLogin").prop("disabled", false);
-                    $("input#ctl00_ucRight1_btnLogin").val("Đăng nhập");
-                },
-                error: function(){
-                    $("input#ctl00_ucRight1_btnLogin").prop("disabled", false);
-                    $("input#ctl00_ucRight1_btnLogin").val("Đăng nhập");
-                    $("input#ctl00_ucRight1_btnLogin").after("<p>Giải captcha thất bại, vui lòng kiểm tra API</p>");
-                }
-            });
-        });
-    }
+function solveCaptcha(){
+    $("input#txtSercurityCode").val(" ");
+    $("input#txtSercurityCode1").val(" ");
+    $("input#txtSecurityCodeValue").val("7215ee9c7d9dc229d2921a40e899ec5f");
+    $("input#txtSecurityCodeValue1").val("7215ee9c7d9dc229d2921a40e899ec5f");
 }
 
 jQuery(function(){
     Resolver.get('__isOn', function(result){
         if(result){
-
             // Lấy captcha khi vào trang
-            setTimeout(function() {
-                getCaptcha();
-            }, 500);
+            solveCaptcha();
 
             // Lấy captcha khi click refresh hình
             $("img#imgRefresh").on("click", function(){
-                setTimeout(function() {
-                    getCaptcha();
-                }, 300);
+                setTimeout(function(){
+                    solveCaptcha();
+                }, 400);
             });
-
         }
     });
 });
