@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "CTUET Captcha Autocomplete",
   "description": "Tự động điền captcha cho trang pdaotao.ctuet.edu.vn.",
-  "version": "1.2",
+  "version": "1.3",
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
@@ -10,11 +10,12 @@
   },
   "permissions": [
     "activeTab",
+    "http://pdaotao.ctuet.edu.vn/*",
     "https://pdaotao.ctuet.edu.vn/*"
   ],
   "content_scripts": [
     {
-      "matches": ["https://pdaotao.ctuet.edu.vn/*"],
+      "matches": ["https://pdaotao.ctuet.edu.vn/*", "http://pdaotao.ctuet.edu.vn/*"],
       "js": [
         "assets/js/captcha_autocomplete.js"
       ]
