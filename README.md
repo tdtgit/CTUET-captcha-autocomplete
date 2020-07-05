@@ -4,12 +4,8 @@ Một extension của trình duyệt Google Chrome giúp tự động xử lý v
 ![CTUET Captcha Autocomplete](https://i.imgur.com/M6BclMD.gif)
 
 ## Hướng dẫn cài đặt
-Truy cập vào trang [Releases](https://github.com/tdtgit/CTUET-captcha-autocomplete/releases) để tải về phiên bản mới nhất. Bạn có thể tải về tập tin `.crx` để việc cài đặt trở nên đơn giản hơn, chỉ cần kéo thả.
-
-1. Mở trình duyệt Chrome, gõ hoặc copy địa chỉ `chrome://extensions`, sau đó nhấn Enter.
-1. Kéo tập tin `.crx` vừa tải về vào bất cứ vị trí nào trên trang đều được.
-1. Trình duyệt hỏi, bạn nhấn Đồng ý hoặc Chấp nhận.
-1. Thành công
+1. Cài đặt trực tiếp tại: https://chrome.google.com/webstore/detail/ctuet-captcha-autocomplet/lapkaclpcbaihabcljgoflmkhjochiji
+1. Tải file zip tại trang Release (https://github.com/tdtgit/CTUET-captcha-autocomplete/releases) và tự thêm vào Chrome.
 
 ## Câu hỏi thường gặp
 
